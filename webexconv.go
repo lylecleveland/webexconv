@@ -122,6 +122,7 @@ func writeCSV(headers []string, fields []string) {
 	w.Flush()
 
 	//Reparses file to remove quotes from header and blank quoted fields as hyperoffice won't import them
+	//This is done to fix noncompatabilities introduced by golang's csv writer
 	scan, error := ioutil.ReadFile(filename + ".csv")
 	if error != nil {
 		panic(error)
